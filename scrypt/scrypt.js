@@ -1,4 +1,6 @@
-/* QUÉ PASA? NO TE GUSTAN LOS APODOS? */
+/* ==========================================================
+   QUÉ PASA? NO TE GUSTAN LOS APODOS?
+========================================================== */
 
 const nombres = [
     "BOT",
@@ -11,28 +13,27 @@ const nombres = [
     "HACKER"
 ];
 
-setInterval(glitchTexto,4000);
+setInterval(glitchTexto, 4000);
 
-function glitchTexto(){
+function glitchTexto() {
 
     const span = document.getElementById("nombre");
-
     const original = span.textContent;
 
     span.classList.add("animar");
 
     let i = 0;
 
-    const intervalo = setInterval(()=>{
+    const intervaloGlitch = setInterval(() => {
 
         span.textContent =
-            nombres[Math.floor(Math.random()*nombres.length)];
+            nombres[Math.floor(Math.random() * nombres.length)];
 
         i++;
 
-        if(i>12){
+        if (i > 12) {
 
-            clearInterval(intervalo);
+            clearInterval(intervaloGlitch);
 
             span.textContent = original;
 
@@ -40,24 +41,49 @@ function glitchTexto(){
 
         }
 
-    },70);
+    }, 70);
 
 }
 
-/*
 
-RELOJ DEL FIN DEL MUNDO
-NO ADELANTAR... POR RAZONES OBVIAS
+/* ==========================================================
+   RELOJ DEL FIN DEL MUNDO
+========================================================== */
 
-*/
-
+//const fechaObjetivo = new Date().getTime() + 5000;
 const fechaObjetivo = new Date("July 4, 2026 00:00:00").getTime();
 
 const dias = document.getElementById("dias");
 const horas = document.getElementById("horas");
 const minutos = document.getElementById("minutos");
 const segundos = document.getElementById("segundos");
+
 const mensaje = document.getElementById("mensaje");
+const grid = document.querySelector(".grid-tiempo");
+const boton = document.getElementById("APRIETAME");
+
+
+function finalizarCuentaAtras() {
+
+    // Inicia la animación CSS
+    grid.classList.add("fin");
+
+    // Espera a que termine
+    grid.addEventListener("animationend", () => {
+
+        grid.style.display = "none";
+
+        mensaje.innerHTML = "ACCESS GRANTED";
+
+        boton.disabled = false;
+
+        // Opcional: animación del botón
+        boton.classList.add("activo");
+
+    }, { once: true });
+
+}
+
 
 function actualizarContador() {
 
@@ -74,10 +100,12 @@ function actualizarContador() {
         minutos.textContent = "00";
         segundos.textContent = "00";
 
-        mensaje.textContent = "¡La cuenta regresiva ha terminado!";
+        finalizarCuentaAtras();
 
         return;
+
     }
+
 
     const diasRestantes = Math.floor(
         diferencia / (1000 * 60 * 60 * 24)
@@ -102,13 +130,72 @@ function actualizarContador() {
     horas.textContent = String(horasRestantes).padStart(2, "0");
     minutos.textContent = String(minutosRestantes).padStart(2, "0");
     segundos.textContent = String(segundosRestantes).padStart(2, "0");
+
 }
+
 
 actualizarContador();
 
 const intervalo = setInterval(actualizarContador, 1000);
 
 
+/* ==========================================================
+   BOTÓN DE PISTAS
+========================================================== */
+
 function mostrarMensaje() {
-    document.getElementById("mensaje").textContent = "Apurado para hacer trampas?";
+
+    const ahora = Date.now();
+
+    // Si todavía NO llegó la fecha
+    if (ahora < fechaObjetivo) {
+
+        mensaje.textContent = "Apurado para hacer trampas?";
+        return;
+
+    }
+
+    // Si YA llegó la fecha
+    mostrarModal(
+        "Por motivos del partido, la primera pista se retrasa un poco."
+    );
+
+}
+
+/* VENTANA MODAL "TEMPORAL" (jeje) */
+
+function mostrarModal(texto){
+
+    // Evita crear dos modales
+    if(document.getElementById("modalPistas")) return;
+
+    const fondo = document.createElement("div");
+    fondo.id = "modalPistas";
+
+    fondo.innerHTML = `
+        <div class="modal-contenido">
+
+            <h2>AVISO</h2>
+
+            <p>${texto}</p>
+
+            <button id="cerrarModal">Aceptar</button>
+
+            <h3 class="argentina">
+                ¡VAMOS ARGENTINA!!!
+            </h3>
+
+        </div>
+    `;
+
+    document.body.appendChild(fondo);
+
+    document
+        .getElementById("cerrarModal")
+        .addEventListener("click", () => {
+
+            fondo.remove();
+
+        });
+
 }
