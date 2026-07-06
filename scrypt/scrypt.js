@@ -4,7 +4,7 @@
 
 const nombres = [
     "BOT",
-    "AMIGO?",
+    "AMIGO??",
     "ENEMIGO",
     "CASCARUDO",
     "NULL",
