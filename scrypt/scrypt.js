@@ -50,8 +50,8 @@ function glitchTexto() {
    RELOJ DEL FIN DEL MUNDO
 ========================================================== */
 
-//const fechaObjetivo = new Date().getTime() + 5000;
-const fechaObjetivo = new Date("July 4, 2026 00:00:00").getTime();
+const fechaObjetivo = new Date().getTime() + 2000;
+//const fechaObjetivo = new Date("July 4, 2026 00:00:00").getTime();
 
 const dias = document.getElementById("dias");
 const horas = document.getElementById("horas");
@@ -61,6 +61,7 @@ const segundos = document.getElementById("segundos");
 const mensaje = document.getElementById("mensaje");
 const grid = document.querySelector(".grid-tiempo");
 const boton = document.getElementById("APRIETAME");
+console.log(boton);
 
 
 function finalizarCuentaAtras() {
@@ -92,6 +93,8 @@ function actualizarContador() {
     const diferencia = fechaObjetivo - ahora;
 
     if (diferencia <= 0) {
+
+        console.log("Llegó la fecha");
 
         clearInterval(intervalo);
 
@@ -164,6 +167,7 @@ function mostrarMensaje() {
 
 /* VENTANA MODAL "TEMPORAL" (jeje) */
 
+/*
 function mostrarModal(texto){
 
     // Evita crear dos modales
@@ -184,6 +188,61 @@ function mostrarModal(texto){
             <h3 class="argentina">
                 ¡VAMOS ARGENTINA!!!
             </h3>
+
+        </div>
+    `;
+
+    document.body.appendChild(fondo);
+
+    document
+        .getElementById("cerrarModal")
+        .addEventListener("click", () => {
+
+            fondo.remove();
+
+        });
+
+}*/
+
+function mostrarModal() {
+
+    // Evita crear dos modales
+    if (document.getElementById("modalPistas")) return;
+
+    // Imágenes de la pista 1
+    const imagenes = [
+        "Pista1/9.png",
+        "Pista1/780.png",
+        "Pista1/76.png",
+        "Pista1/532.png",
+        "Pista1/635.png",
+        "Pista1/5.png"
+    ];
+
+    const fondo = document.createElement("div");
+    fondo.id = "modalPistas";
+
+    fondo.innerHTML = `
+        <div class="modal-contenido">
+
+            <h2>PISTA 1</h2>
+
+            <div class="grid-pistas">
+
+                ${imagenes.map((ruta, indice) => `
+                    <div class="pista-img">
+                        <img
+                            src="${ruta}"
+                            alt="Pista ${indice + 1}"
+                        >
+                    </div>
+                `).join("")}
+
+            </div>
+
+            <button id="cerrarModal">
+                Cerrar
+            </button>
 
         </div>
     `;
