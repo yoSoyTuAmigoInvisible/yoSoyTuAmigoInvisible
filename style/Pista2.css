@@ -1,0 +1,63 @@
+.no-select{
+
+    user-select:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+
+}
+
+@keyframes glowOjos{
+
+    from{
+
+        text-shadow:
+            0 0 3px #ffffff,
+            0 0 6px rgba(255,255,255,.4);
+
+    }
+
+    to{
+
+        text-shadow:
+            0 0 8px #ffffff,
+            0 0 20px rgba(255,255,255,.8);
+
+    }
+
+}
+
+.ojo-glow{
+
+    color:#ffffff;  
+
+    text-shadow:
+
+        0 0 4px #ffffff,
+        0 0 10px #ffffff,
+        0 0 18px rgba(255,255,255,.35);
+
+    animation:glowOjos 1.5s ease-in-out infinite alternate;
+
+}
+
+.texto-pista{
+
+    margin:35px 0;
+
+    font-size:1.3rem;
+
+    letter-spacing:3px;
+
+}
+
+.mensaje-oculto{
+
+    margin-top:45px;
+
+    color:rgba(0,0,0,0);
+
+    letter-spacing:4px;
+
+    /*user-select:none;*/
+
+}
