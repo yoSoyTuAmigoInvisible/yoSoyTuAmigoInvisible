@@ -108,23 +108,3 @@ function mostrarModalPista2() {
 
     console.log("- . .-. .-. .. -... .-.. . / -... --- - .. -. --..-- / --.- ..- . .-. .. .- / .... .- -.-. . .-. / - .-. .- -- .--. .- / . .-.. / .-.. --- -.-. --- .-.-.");
 }
-
-const audio = new Audio("Pista2/pista2-audio.wav");
-
-audio.volume = 0.6;
-
-function reproducirLoop(){
-
-    audio.currentTime = 0;
-
-    audio.play();
-
-    audio.onended = () => {
-
-        setTimeout(reproducirLoop,5000);
-
-    };
-
-}
-
-reproducirLoop();
