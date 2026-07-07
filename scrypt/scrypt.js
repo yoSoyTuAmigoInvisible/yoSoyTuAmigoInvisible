@@ -4,7 +4,7 @@
 
 const nombres = [
     "BOT",
-    "AMIGO??",
+    "AMIGO?",
     "ENEMIGO",
     "CASCARUDO",
     "NULL",
@@ -141,12 +141,89 @@ actualizarContador();
 
 const intervalo = setInterval(actualizarContador, 1000);
 
-
 /* ==========================================================
    BOTÓN DE PISTAS
 ========================================================== */
 
 function mostrarMensaje() {
+
+    const ahora = Date.now();
+
+    // Antes de la fecha
+    if (ahora < fechaObjetivo) {
+
+        mensaje.textContent = "Apurado para hacer trampas?";
+        return;
+
+    }
+
+    // Después de la fecha
+
+    mostrarModalPista2();
+
+}
+
+function crearModal(titulo, imagenes) {
+
+    if (document.getElementById("modalPistas")) return;
+
+    const fondo = document.createElement("div");
+
+    fondo.id = "modalPistas";
+
+    fondo.innerHTML = `
+
+        <div class="modal-contenido">
+
+            <h2>${titulo}</h2>
+
+            <div class="grid-pistas">
+
+                ${imagenes.map((ruta, indice)=>`
+
+                    <div class="pista-img">
+
+                        <img
+                            src="${ruta}"
+                            alt="Imagen ${indice+1}"
+                        >
+
+                    </div>
+
+                `).join("")}
+
+            </div>
+
+            <button id="cerrarModal">
+                Cerrar
+            </button>
+
+        </div>
+
+    `;
+
+    document.body.appendChild(fondo);
+
+    document
+        .getElementById("cerrarModal")
+        .addEventListener("click", ()=>{
+
+            fondo.remove();
+
+        });
+
+}
+
+
+
+
+
+
+/* ==========================================================
+   BOTÓN DE PISTAS
+========================================================== */
+
+/*function mostrarMensaje() {
 
     const ahora = Date.now();
 
@@ -163,7 +240,7 @@ function mostrarMensaje() {
         "Por motivos del partido, la primera pista se retrasa un poco."
     );
 
-}
+}*/
 
 /* VENTANA MODAL "TEMPORAL" (jeje) */
 
