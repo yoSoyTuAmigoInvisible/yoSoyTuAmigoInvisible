@@ -68,7 +68,7 @@ function mostrarModalPista2() {
        AUDIO EN BUCLE
     =============================== */
 
-    const audio = new Audio("/Pista2/pista2-audio.wav");
+    const audio = new Audio("Pista2/pista2-audio.wav");
 
     audio.volume = 0.6;
 
@@ -109,7 +109,7 @@ function mostrarModalPista2() {
     console.log("- . .-. .-. .. -... .-.. . / -... --- - .. -. --..-- / --.- ..- . .-. .. .- / .... .- -.-. . .-. / - .-. .- -- .--. .- / . .-.. / .-.. --- -.-. --- .-.-.");
 }
 
-const audio = new Audio("/Pista2/pista2-audio.wav");
+const audio = new Audio("Pista2/pista2-audio.wav");
 
 audio.volume = 0.6;
 
