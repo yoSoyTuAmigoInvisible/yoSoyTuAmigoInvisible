@@ -1,10 +1,62 @@
 /* ==========================================================
+   FUNCIÓN BASE
+========================================================== */
+
+function crearModal(titulo, imagenes) {
+
+    if (document.getElementById("modalPistas")) return;
+
+    const fondo = document.createElement("div");
+    fondo.id = "modalPistas";
+
+    fondo.innerHTML = `
+
+        <div class="modal-contenido">
+
+            <h2>${titulo}</h2>
+
+            <div class="grid-pistas">
+
+                ${imagenes.map((ruta, indice) => `
+
+                    <div class="pista-img">
+
+                        <img
+                            src="${ruta}"
+                            alt="Imagen ${indice + 1}"
+                        >
+
+                    </div>
+
+                `).join("")}
+
+            </div>
+
+            <button id="cerrarModal">
+                Cerrar
+            </button>
+
+        </div>
+
+    `;
+
+    document.body.appendChild(fondo);
+
+    document
+        .getElementById("cerrarModal")
+        .addEventListener("click", () => {
+
+            fondo.remove();
+
+        });
+
+}
+
+/* ==========================================================
    MODAL - PISTA 1
 ========================================================== */
 
 function mostrarModalPista1() {
-
-    if (document.getElementById("modalPistas")) return;
 
     const imagenes = [
 
@@ -17,13 +69,9 @@ function mostrarModalPista1() {
 
     ];
 
-    crearModal(
-        "PISTA 1",
-        imagenes
-    );
+    crearModal("PISTA 1", imagenes);
 
 }
-
 
 /* ==========================================================
    MODAL - PISTA 2
@@ -31,7 +79,6 @@ function mostrarModalPista1() {
 
 function mostrarModalPista2() {
 
-    // Evita abrir dos modales
     if (document.getElementById("modalPistas")) return;
 
     const fondo = document.createElement("div");
@@ -64,10 +111,6 @@ function mostrarModalPista2() {
 
     document.body.appendChild(fondo);
 
-    /* ===============================
-       AUDIO EN BUCLE
-    =============================== */
-
     const audio = new Audio("Pista2/pista2-audio.wav");
 
     audio.volume = 0.6;
@@ -87,10 +130,6 @@ function mostrarModalPista2() {
 
     }, 5000);
 
-    /* ===============================
-       CERRAR
-    =============================== */
-
     document
         .getElementById("cerrarModal")
         .addEventListener("click", () => {
@@ -98,13 +137,93 @@ function mostrarModalPista2() {
             clearInterval(intervaloAudio);
 
             audio.pause();
-
             audio.currentTime = 0;
 
             fondo.remove();
 
         });
 
+}
 
-    console.log("- . .-. .-. .. -... .-.. . / -... --- - .. -. --..-- / --.- ..- . .-. .. .- / .... .- -.-. . .-. / - .-. .- -- .--. .- / . .-.. / .-.. --- -.-. --- .-.-.");
+/* ==========================================================
+   MODAL - PISTA 3
+========================================================== */
+
+function mostrarModalPista3() {
+
+    if (document.getElementById("modalPistas")) return;
+
+    const imagenes = [
+
+        "Pista3/1.jpg",
+        "Pista3/2.jpg",
+        "Pista3/3.png"
+
+    ];
+
+    let indice = 0;
+
+    const fondo = document.createElement("div");
+    fondo.id = "modalPistas";
+
+    fondo.innerHTML = `
+
+        <div class="modal-contenido modal-pista3">
+
+            <h2>PISTA 3</h2>
+
+            <div class="contenedor-imagen">
+
+                <img
+                    id="imagenPista3"
+                    src="${imagenes[0]}"
+                    alt="Pista 3"
+                >
+
+            </div>
+
+            <button id="cerrarModal">
+                Cerrar
+            </button>
+
+        </div>
+
+    `;
+
+    document.body.appendChild(fondo);
+
+    const img = document.getElementById("imagenPista3");
+
+    const intervalo = setInterval(() => {
+
+        img.style.opacity = "0";
+
+        setTimeout(() => {
+
+            indice++;
+
+            if (indice >= imagenes.length) {
+
+                indice = 0;
+
+            }
+
+            img.src = imagenes[indice];
+
+            img.style.opacity = "1";
+
+        }, 300);
+
+    }, 5000);
+
+    document
+        .getElementById("cerrarModal")
+        .addEventListener("click", () => {
+
+            clearInterval(intervalo);
+
+            fondo.remove();
+
+        });
+
 }
