@@ -159,7 +159,7 @@ function mostrarMensaje() {
 
     // Después de la fecha
 
-    mostrarModalPista2();
+    mostrarModalPista3();
 
 }
 
