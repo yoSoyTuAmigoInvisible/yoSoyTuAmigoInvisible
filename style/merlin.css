@@ -1,0 +1,120 @@
+/* ========================================= */
+/* MERLIN */
+/* ========================================= */
+
+#merlin{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    width:220px;
+
+    cursor:pointer;
+
+    z-index:200;
+
+    transition:.35s;
+
+    user-select:none;
+
+}
+
+#merlin:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* ========================================= */
+/* GLOBO */
+/* ========================================= */
+
+#speechBubble{
+
+    position:fixed;
+
+    right:260px;
+
+    bottom:180px;
+
+    width:340px;
+
+    min-height:120px;
+
+    padding:20px;
+
+    background:rgba(12,18,35,.95);
+
+    border:2px solid #5db5ff;
+
+    border-radius:15px;
+
+    color:white;
+
+    display:none;
+
+    z-index:210;
+
+    box-shadow:
+        0 0 20px rgba(93,181,255,.5);
+
+    animation:bubbleShow .3s ease;
+
+}
+
+/* Pico del globo */
+
+#speechBubble::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:-18px;
+
+    bottom:35px;
+
+    border-width:10px;
+
+    border-style:solid;
+
+    border-color:
+        transparent
+        transparent
+        transparent
+        #5db5ff;
+
+}
+
+#speechBubble p{
+
+    font-size:18px;
+
+    line-height:1.6;
+
+}
+
+/* ========================================= */
+
+@keyframes bubbleShow{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}

@@ -1,0 +1,250 @@
+/* ========================================================= */
+/* FONDO */
+/* ========================================================= */
+
+body{
+
+    background:
+    radial-gradient(circle at top,
+    #20365e 0%,
+    #0b1526 40%,
+    #03060d 80%,
+    #000000 100%);
+
+}
+
+/* ========================================================= */
+
+#storm{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:1;
+
+}
+
+/* ========================================================= */
+/* NUBES 1 */
+/* ========================================================= */
+
+#cloudLayer1{
+
+    position:absolute;
+
+    inset:-25%;
+
+    opacity:.22;
+
+    filter:blur(60px);
+
+    background:
+
+    radial-gradient(circle,#8bbcff 0%,transparent 30%),
+    radial-gradient(circle,#ffffff 0%,transparent 28%),
+    radial-gradient(circle,#7da9ff 0%,transparent 24%);
+
+    background-size:
+
+    700px 500px,
+    600px 400px,
+    800px 600px;
+
+    animation:cloudMove1 80s linear infinite;
+
+}
+
+/* ========================================================= */
+/* NUBES 2 */
+/* ========================================================= */
+
+#cloudLayer2{
+
+    position:absolute;
+
+    inset:-20%;
+
+    opacity:.10;
+
+    filter:blur(100px);
+
+    background:
+
+    radial-gradient(circle,#ffffff 0%,transparent 35%),
+    radial-gradient(circle,#9cc9ff 0%,transparent 30%);
+
+    background-size:
+
+    900px 700px,
+    750px 600px;
+
+    animation:cloudMove2 140s linear infinite;
+
+}
+
+/* ========================================================= */
+/* LLUVIA */
+/* ========================================================= */
+
+#rain{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+}
+
+/* ========================================================= */
+
+.raindrop{
+
+    position:absolute;
+
+    width:2px;
+
+    height:25px;
+
+    background:linear-gradient(
+
+        transparent,
+
+        rgba(180,220,255,.9)
+
+    );
+
+    opacity:.65;
+
+    animation:rain linear infinite;
+
+}
+
+/* ========================================================= */
+/* PARTICULAS */
+/* ========================================================= */
+
+#particles{
+
+    position:absolute;
+
+    inset:0;
+
+}
+
+/* ========================================================= */
+
+.particle{
+
+    position:absolute;
+
+    width:3px;
+
+    height:3px;
+
+    border-radius:50%;
+
+    background:#8fcfff;
+
+    opacity:.5;
+
+    animation:floatParticle linear infinite;
+
+}
+
+/* ========================================================= */
+/* FLASH */
+/* ========================================================= */
+
+#flash{
+
+    position:fixed;
+
+    inset:0;
+
+    background:white;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:100;
+
+}
+
+/* ========================================================= */
+
+@keyframes rain{
+
+    from{
+
+        transform:translateY(-100px);
+
+    }
+
+    to{
+
+        transform:translateY(120vh);
+
+    }
+
+}
+
+/* ========================================================= */
+
+@keyframes floatParticle{
+
+    from{
+
+        transform:
+        translateY(100vh)
+        translateX(0);
+
+    }
+
+    to{
+
+        transform:
+        translateY(-20vh)
+        translateX(60px);
+
+    }
+
+}
+
+/* ========================================================= */
+
+@keyframes cloudMove1{
+
+    from{
+
+        transform:translateX(0);
+
+    }
+
+    to{
+
+        transform:translateX(-300px);
+
+    }
+
+}
+
+@keyframes cloudMove2{
+
+    from{
+
+        transform:translateX(0);
+
+    }
+
+    to{
+
+        transform:translateX(250px);
+
+    }
+
+}
