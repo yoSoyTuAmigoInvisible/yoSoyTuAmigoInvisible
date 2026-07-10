@@ -1,0 +1,1 @@
+console.log("Proyecto Amigo Invisible II iniciado.");
