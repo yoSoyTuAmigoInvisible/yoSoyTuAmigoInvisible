@@ -1,63 +1,255 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NO ENTRES!</title>
-    <link rel="shortcut icon" href="/style/escarabajo-tortuga.ico" type="image/x-icon">
+    <title>Amigo Invisible II</title>
 
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/Pista1.css">
-    <link rel="stylesheet" href="style/Pista2.css">
-    <link rel="stylesheet" href="style/Pista3.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style/base.css">
+    <link rel="stylesheet" href="style/background.css">
+    <link rel="stylesheet" href="style/buttons.css">
+    <link rel="stylesheet" href="style/modal.css">
+    <link rel="stylesheet" href="style/merlin.css">
 
-    <title>Document</title>
 </head>
+
 <body>
 
-    <!-- Ah, pero qué crack que sos... Si estás leyendo esto, te advierto que no vas a encontrar nada de utilidad -->
+    <div id="mobileBlock">
 
-    <h1>¿Estás listo para comenzar, <span id="nombre" class="glitch">Franco</span>?</h1>
+    <div class="mobileMessage">
 
-    <br>
+        <h1>⚠</h1>
 
-    <!-- ↓↓↓Por si necesitas una ayuda↓↓↓ -->
-    <!-- - . .-. .-. .. -... .-.. . / -... --- - .. -. --..-- / --.- ..- . .-. .. .- / .... .- -.-. . .-. / - .-. .- -- .--. .- / . .-.. / .-.. --- -.-. --- .-.-.  -->
-    
-    <div class="contador">
-        <h1>Cuenta regresiva<span class="cursor">_</span></h1>
+        <h2>TE RECOMIENDO USAR LA PC ESTA VEZ</h2>
 
-        <div class="grid-tiempo">
-            <div class="item">
-                <span id="dias">00</span>
-                <p>Días</p>
-            </div>
+        <p>
+            La experiencia fue diseñada para disfrutarse desde una computadora.
+        </p>
 
-            <div class="item">
-                <span id="horas">00</span>
-                <p>Horas</p>
-            </div>
-
-            <div class="item">
-                <span id="minutos">00</span>
-                <p>Minutos</p>
-            </div>
-
-            <div class="item">
-                <span id="segundos">00</span>
-                <p>Segundos</p>
-            </div>
-        </div>
-
-        <h2 id="mensaje"></h2>
     </div>
 
-    <!-- TE MENTI! RAPIDO! ACTIVA ESTE BOTON PARA CONSEGUIR LAS PISTAS ANTES ↓ -->
+</div>
 
-    <button id="APRIETAME" onclick="mostrarMensaje()" disabled>Pistas</button>
-    
-    <script src="scrypt/scrypt.js"></script>
-        <script src="scrypt/modales.js"></script>
+    <!-- Fondo -->
+
+<div id="storm">
+
+    <div id="cloudLayer1"></div>
+
+    <div id="cloudLayer2"></div>
+
+    <div id="rain"></div>
+
+    <div id="particles"></div>
+
+</div>
+
+<div id="flash"></div>
+
+    <!-- Contenido principal -->
+
+    <main class="container">
+
+        <h1 id="mainTitle">
+
+            LLEGÓ EL DÍA, FRANCO
+            <br>
+            ¿LISTO PARA CONCLUIRLO TODO?
+
+        </h1>
+
+        <div class="buttonContainer">
+
+            <button class="hintButton" data-modal="modal1">
+                PISTA 1
+            </button>
+
+            <button class="hintButton" data-modal="modal2">
+                PISTA 2
+            </button>
+
+            <button class="hintButton" data-modal="modal3">
+                PISTA 3
+            </button>
+
+            <button class="hintButton" data-modal="modal4">
+                PISTA 4
+            </button>
+
+        </div>
+
+    </main>
+
+    <!-- ========================= -->
+    <!-- MODALES -->
+    <!-- ========================= -->
+
+    <div id="modal1" class="modal">
+
+        <div class="modalContent modalPista1">
+
+            <span class="close">&times;</span>
+
+            <h2>PISTA 1</h2>
+
+            <div class="gridPista1">
+
+                <img src="pista1/9.png" alt="Imagen 1">
+                <img src="pista1/780.png" alt="Imagen 2">
+                <img src="pista1/76.png" alt="Imagen 3">
+                <img src="pista1/532.png" alt="Imagen 4">
+                <img src="pista1/635.png" alt="Imagen 5">
+                <img src="pista1/5.png" alt="Imagen 6">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="modal2" class="modal">
+
+        <div class="modalContent modalPista2">
+
+            <span class="close">&times;</span>
+
+            <div class="mensajePista2">
+
+                <span>LO ESENCIAL ES INVISIBLE A LOS </span>
+
+                <span class="ojosGlow">OJOS</span>
+
+            </div>
+
+            <div class="mensajeOculto">
+
+                CIERRA LOS OJOS Y ESCUCHA EL RITMO DE LA PISTA
+
+            </div>
+
+        </div>
+
+    </div>
+
+<div id="modal3" class="modal">
+
+    <div class="modalContent modalPista3">
+
+        <span class="close">&times;</span>
+
+        <h2>PISTA 3</h2>
+
+        <div class="carousel">
+
+            <button class="carouselButton prev">
+                &#10094;
+            </button>
+
+            <div class="carouselContainer">
+
+                <img
+                    id="carouselImage"
+                    src="pista3/1.png"
+                    alt="Pista 3">
+
+                <div id="carouselCaption">
+
+                    Mensaje de la imagen
+
+                </div>
+
+            </div>
+
+            <button class="carouselButton next">
+                &#10095;
+            </button>
+
+        </div>
+
+        <div class="carouselDots">
+
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="modal4" class="modal">
+
+    <div class="modalContent modalPista4">
+
+        <span class="close">&times;</span>
+
+        <div id="countdownContainer">
+
+            <h2>TIEMPO HASTA LA PISTA FINAL</h2>
+
+            <div id="countdown"></div>
+
+        </div>
+
+        <div id="finalHint">
+
+            ¿CUÁL SERÁ TU BANDO?<br><br>
+
+            <span class="teamMagma">
+                TEAM MAGMA
+            </span>
+
+            &nbsp;o&nbsp;
+
+            <span class="teamAqua">
+                TEAM AQUA
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- MERLIN -->
+    <!-- ========================= -->
+
+    <img
+        src="imagenesExtra/merlin.png"
+        id="merlin"
+        alt="Merlin">
+
+    <div id="speechBubble">
+
+        <p id="merlinText">
+
+            ...
+
+        </p>
+
+    </div>
+
+    <!-- JS -->
+
+    <script src="script/pistas.js"></script>
+    <script src="script/modal.js"></script>
+    <script src="script/background.js"></script>
+    <script src="script/merlin.js"></script>
+    <script src="script/app.js"></script>
+    <script src="script/gameState.js"></script>
+    <script src="script/carousel.js"></script>
+    <script src="script/countdown.js"></script>
+    <script src="script/mobile.js"></script>
+
 </body>
+
 </html>
